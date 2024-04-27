@@ -21,6 +21,35 @@ spec:
         ports:
         - containerPort: 80
 ---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: application-rollout
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  strategy:
+    blueGreen:
+      activeService: app-service
+      previewService: app-preview-service
+      autoPromotionEnabled: true
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: container-myapp
+        image: docksaita/myapp
+        ports:
+        - containerPort: 80
+
+
+---
 # Nodeport service to expose the application
 apiVersion: v1
 kind: Service
