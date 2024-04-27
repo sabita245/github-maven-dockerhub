@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: container-app
+  name: container-application
   labels:
     app: app
   namespace: default
