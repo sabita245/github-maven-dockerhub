@@ -43,8 +43,8 @@ spec:
         app: app
     spec:
       containers:
-      - name: container-myapp
-        image: docksaita/myapp
+      - name: container-newapp
+        image: docksaita/container-newapp
         ports:
         - containerPort: 80
 
